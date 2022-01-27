@@ -53,6 +53,11 @@ public:
     double growMultiplier = 2.0;
     double shrinkMultiplier = 0.5;
 
+/**
+ * Int finalsize
+ * essentially a getter for private int size
+ * no params
+ */
     int finalSize() {
         return size;
     }
@@ -250,9 +255,7 @@ public:
 
             checkResize();
             return true;
-        }
-
-        return false;
+        }\
     }
 
     /**
@@ -286,7 +289,13 @@ public:
 
         A = B; // reset array pointer
     }
-
+/**
+ * 
+ * Calculates the ratio of items in the list to the size
+ * then determins if that ratio is in thresholds to grow or shrink
+ * returns nothing, has no params
+ * 
+ */
     void checkResize() {
         double ratio = (((double)top)/size);
         if(ratio >= growThresh) {
@@ -333,13 +342,16 @@ public:
 // Simple Array Based Stack Usage:
 int main(int argc, char *argv[]) {
     ArrayStack stack;
+    //default input file
     string inputFile = "test_nums.dat";
+    //if there are 5 arguments, use default input file, fill configuration
    if (argc == 5) {
         stack.growThresh = atof(argv[1]);
         stack.shrinkThresh = atof(argv[2]);
         stack.growMultiplier = atof(argv[3]);
         stack.shrinkMultiplier = atof(argv[4]);
     } 
+    //if there are six, fill configuration and define input file
     if (argc == 6) {
         stack.growThresh = atof(argv[1]);
         stack.shrinkThresh = atof(argv[2]);
@@ -347,19 +359,26 @@ int main(int argc, char *argv[]) {
         stack.shrinkMultiplier = atof(argv[4]);
         inputFile = atof(argv[5]);
     }
-    int num;
+    //open input file
     ifstream infile;
     infile.open(inputFile);
+
+    //define int num, which will be the number read in from input file
+    int num;
     while(infile >> num) {
+        //increment the number of commands processed
         stack.commandsProcessed++;
+        //if the number is even
         if(num % 2 == 0) {
+            //push it to the arraystack
             stack.Push(num);
         } else {
+            //otherwise, pop from the array stack
             stack.Pop();
         }
     }
     cout << "##################################################################\n";
-    cout << "   Assignment 4 - Resizing the Satck\nCMPS 3013\nDylan Miles\n\n";
+    cout << "   Assignment 4 - Resizing the Satck\n   CMPS 3013\n   Dylan Miles\n\n";
     cout << "   Config Params:\n";
     cout << "     Full Threshold: " << stack.growThresh << endl;
     cout << "     Shrink Threshold: " << stack.shrinkThresh << endl;
@@ -372,5 +391,5 @@ int main(int argc, char *argv[]) {
     cout << "   End Stack Size: " << stack.finalSize() << endl;
     cout << "   Stack Resized: " << stack.resizes << " times" << endl;
     cout << "##################################################################\n";
-
+    return 0;
 }
