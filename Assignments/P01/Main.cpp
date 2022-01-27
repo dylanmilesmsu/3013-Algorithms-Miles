@@ -46,8 +46,8 @@ private:
 
 public:
     int maxSize;
-    int resizes;
-    int commandsProcessed;
+    int resizes = 0;
+    int commandsProcessed = 0;
     double growThresh = 1.0;
     double shrinkThresh = 0.15;
     double growMultiplier = 2.0;
