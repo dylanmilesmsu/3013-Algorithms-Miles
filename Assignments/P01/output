@@ -1,0 +1,17 @@
+##################################################################
+   Assignment 4 - Resizing the Satck
+   CMPS 3013
+   Dylan Miles
+
+   Config Params:
+     Full Threshold: 1
+     Shrink Threshold: 0.15
+     Grow Ratio: 2
+     Shrink Ratio: 0.5
+
+   Processed commands: 100000
+
+   Max Stack Size: 40960
+   End Stack Size: 10
+   Stack Resized: 12 times
+##################################################################
