@@ -45,7 +45,7 @@ private:
     // (top + 1) / size
 
 public:
-    int maxSize;
+    int maxSize = 0;
     int resizes = 0;
     int commandsProcessed = 0;
     double growThresh = 1.0;
@@ -255,7 +255,7 @@ public:
 
             checkResize();
             return true;
-        }\
+        }
     }
 
     /**
@@ -324,6 +324,8 @@ public:
   */
     void ContainerShrink() {
         int newSize = size * shrinkMultiplier;    // double size of original
+        if(newSize < 10)
+            newSize = 10;
         int *B = new int[newSize]; // allocate new memory
 
         for (int i = 0; i < top; i++) { // copy values to new array
@@ -357,7 +359,7 @@ int main(int argc, char *argv[]) {
         stack.shrinkThresh = atof(argv[2]);
         stack.growMultiplier = atof(argv[3]);
         stack.shrinkMultiplier = atof(argv[4]);
-        inputFile = atof(argv[5]);
+        inputFile = argv[5];
     }
     //open input file
     ifstream infile;
