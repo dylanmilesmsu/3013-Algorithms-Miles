@@ -20,3 +20,6 @@
 ### Example Command
 
 - ./main
+- ./main {growth threshold} {shrink threshold} {growth multiplier} {shrink multiplier}
+- ./main {growth threshold} {shrink threshold} {growth multiplier} {shrink multiplier} {input file name}
+- ./main 1.0 0.15 2.0 0.5 test_nums.dat
