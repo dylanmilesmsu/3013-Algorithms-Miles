@@ -15,6 +15,7 @@
 /////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
 #include <fstream>
+#include "mygetch.hpp"
 
 using namespace std;
 
@@ -280,7 +281,7 @@ public:
         int *B = new int[newSize]; // allocate new memory
 
         for (int i = 0; i < top; i++) { // copy values to new array
-            B[i] = A[i];
+            B[i] https://cdn.discordapp.com/attachments/918979017686790154/948363640841588756/Screenshot_20220301-163815.png= A[i];
         }
 
         delete[] A; // delete old array
