@@ -6,7 +6,7 @@
  * files our in the resources folder. 
  * 
  */
-
+#include "Trie.hpp"
 #include <iostream>
 #include "JsonFacade.hpp"       // need to grab a copy from resources folder
 #include <time.h>
@@ -15,7 +15,17 @@
 
 using namespace std;
 
+void loadTrie(Trie& trie, vector<string> keys) {
+    int i = 0;
+    for(string s : keys) {
+        trie.insert(s);
+        i++;
+    }
+    cout << "size: " << i << endl;
+}
+
 int main(){
+    cout << ((int) 'z') << endl;
     Timer T;
     T.Start();
     JsonFacade J("dict_w_defs.json");   // create instance of json class
@@ -29,10 +39,12 @@ int main(){
     string key;                         // key variable to access json object
 
     vector<string> keys = J.getKeys();
-    
-    cout<<keys.size()<<endl;
-    index = rand() % keys.size();
-    key = J.getKey(index);
+    Trie werg;
+    loadTrie(werg, keys);
+    cout << werg.children();
+    // cout<<keys.size()<<endl;
+    // index = rand() % keys.size();
+    // key = J.getKey(index);
 
-    cout<<key<<" = "<<J.getValue(key)<<endl;
+    // cout<<key<<" = "<<J.getValue(key)<<endl;
 }
