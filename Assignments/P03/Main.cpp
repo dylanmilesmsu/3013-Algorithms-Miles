@@ -61,7 +61,7 @@ int main() {
     loadTrie(trie, s);
     T.End();
     //output
-    cout << T.Seconds() << "." << T.MilliSeconds() << "s to read in \'" << s << "\'!\n";
+    cout << T.Seconds() << "s to read in \'" << s << "\'!\n";
 
     char g;
     string searchword = "";
