@@ -28,11 +28,23 @@
 
 
 
+
+
 ### Instructions
 
 
 
+
+
+
+
 - This program does not require any non standard libraries
+
+- compile with g++/gcc
+
+
+
+
 
 
 
@@ -40,7 +52,15 @@
 
 
 
+
+
+- g++ Main.cpp -o Main
+
 - ./main
+
+
+
+
 
 
 
