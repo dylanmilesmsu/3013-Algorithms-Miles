@@ -41,7 +41,12 @@ int main(){
     vector<string> keys = J.getKeys();
     Trie werg;
     loadTrie(werg, keys);
-    cout << werg.children();
+    // cout << werg.children();
+    vector<string> results;
+    results = werg.findall("over");
+    for(string s : results) {
+        cout << s << endl;
+    }
     // cout<<keys.size()<<endl;
     // index = rand() % keys.size();
     // key = J.getKey(index);

@@ -13,7 +13,8 @@
 //
 /////////////////////////////////////////////////////////////////////////////////
 
-#include "List.hpp"
+#include "JsonFacade.hpp"
+#include "Trie.hpp"
 #include <iostream>
 #include <fstream>
 #include "timer.hpp"
@@ -33,33 +34,31 @@ void toLower(string &s) {
 }
 /**
  * @brief 
- * filles a WordList by reference with the data from file 'filename'.
+ * filles a Trie by reference with the data from file 'filename'.
  * @param list 
  * @param filename 
  */
-void fillList(WordList &list, string filename) {
-    ifstream fin;
-    string data;
-    fin.open(filename);
-    while(fin >> data) {
-        //convert data to lowercase before adding to list
-        toLower(data);
-        WordNode word(data);
-        // cout << word.word << endl;
-        list.push(&word);
+void loadTrie(Trie& trie, string name) {
+    JsonFacade J(name);   // create instance of json class
+    vector<string> keys = J.getKeys();
+    int i = 0;
+    for(string s : keys) {
+        trie.insert(s);
+        i++;
     }
+    cout << "size: " << i << endl;
 }
 
 
 int main() {
     //initialize things
-    WordList list;
-    string s = "dictionary.txt";
+    Trie trie;
+    string s = "dict_w_defs.json";
     Timer T;
 
     //Benchmark filling the list
     T.Start();
-    fillList(list, s);
+    loadTrie(trie, s);
     T.End();
     //output
     cout << T.Seconds() << "." << T.MilliSeconds() << "s to read in \'" << s << "\'!\n";
@@ -87,7 +86,8 @@ int main() {
             searchword += g; // append char to word
             T.Start(); // begin benchmarking
             //finds matching words and adds them to a vector of strings
-            vector<string> words = list.findWords(searchword); 
+            // vector<string> words = list.findWords(searchword); 
+            vector<string> words = trie.findall(searchword); 
             int index;
             int k = 0;
             //If the user didn't input a space
@@ -96,7 +96,7 @@ int main() {
                 T.End();
                 //output the results
                 cout << termcolor::red << searchword << termcolor::reset << endl;
-                cout << words.size() << " words found in " << T.Seconds() << "." << T.MilliSeconds() << "s!" << endl;
+                cout << words.size() << " words found in " << T.Seconds() << "s!" << endl;
                 //loop through the list of results
                 for (int i = 0; i < words.size(); i++) {
                     //limit the output to 10
