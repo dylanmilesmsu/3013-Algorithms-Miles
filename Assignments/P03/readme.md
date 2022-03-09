@@ -42,7 +42,7 @@
 ### Example Command
 
 
-g++ Main.cpp -o Main
+- g++ Main.cpp -o Main
 - ./main
 
 
