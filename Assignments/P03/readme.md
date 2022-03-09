@@ -24,7 +24,7 @@
 | 7 | [termcolor.hpp](./termcolor.hpp)     | text coloring library. |
 | 8 | [timer.hpp](./timer.hpp)     | timer helper class. |
 | 9 | [banner](./banner)         | Program banner        |
-| 10 | [griffin 2.png](./griffin 2.png) | Provided output file  |
+| 10 | [griffin2.png](./griffin2.png) | Provided output file  |
 
 
 
