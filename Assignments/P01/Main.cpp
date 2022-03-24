@@ -281,7 +281,7 @@ public:
         int *B = new int[newSize]; // allocate new memory
 
         for (int i = 0; i < top; i++) { // copy values to new array
-            B[i] https://cdn.discordapp.com/attachments/918979017686790154/948363640841588756/Screenshot_20220301-163815.png= A[i];
+            B[i] = A[i];
         }
 
         delete[] A; // delete old array
